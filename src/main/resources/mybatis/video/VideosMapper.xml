@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="VideosMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectVideosCloumns">
+        id,
+        videoName,
+        videoURL,
+        creatTime,
+        lastUpdate
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.VideosDto" useGeneratedKeys="true" keyProperty="id">
+        insert into videos(
+          id,
+          videoName,
+          videoURL,
+          creatTime,
+          lastUpdate
+        ) values (
+          #{id},
+          #{videoName},
+          #{videoURL},
+          #{creatTime},
+          #{lastUpdate}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.VideosDto">
+		delete from videos
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.VideosDto">
+        update videos set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        <if test="videoName !=null and videoName != ''">
+            videoName = #{videoName},
+        </if>
+        <if test="videoURL !=null and videoURL != ''">
+            videoURL = #{videoURL},
+        </if>
+        <if test="creatTime !=null">
+            <![CDATA[creatTime = #{creatTime},]]>
+        </if>
+        <if test="lastUpdate !=null">
+            <![CDATA[lastUpdate = #{lastUpdate},]]>
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.VideosDto" resultType="com.domain.dto.VideosDto">
+        select
+        <include refid="selectVideosCloumns" />
+        from  videos
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.VideosDto" resultType="com.domain.dto.VideosDto">
+        select
+        <include refid="selectVideosCloumns" />
+        from  videos
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="videoName !=null and videoName != ''">
+            and videoName = #{videoName}
+        </if>
+        <if test="videoURL !=null and videoURL != ''">
+            and videoURL = #{videoURL}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.VideosDto" resultType="com.domain.dto.VideosDto">
+        select
+        <include refid="selectVideosCloumns" />
+        from  videos
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="videoName !=null and videoName != ''">
+            and videoName = #{videoName}
+        </if>
+        <if test="videoURL !=null and videoURL != ''">
+            and videoURL = #{videoURL}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+</mapper>

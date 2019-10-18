@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectUserCloumns">
+        id,
+        userName,
+        wxOpenID,
+        age,
+        headImg,
+        userStatus,
+        ceartTime,
+        lastUpdate
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.UserDto" useGeneratedKeys="true" keyProperty="id">
+        insert into user(
+          id,
+          userName,
+          wxOpenID,
+          age,
+          headImg,
+          userStatus,
+          ceartTime,
+          lastUpdate
+        ) values (
+          #{id},
+          #{userName},
+          #{wxOpenID},
+          #{age},
+          #{headImg},
+          #{userStatus},
+          #{ceartTime},
+          #{lastUpdate}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.UserDto">
+		delete from user
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.UserDto">
+        update user set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        <if test="userName !=null and userName != ''">
+            userName = #{userName},
+        </if>
+        <if test="wxOpenID !=null and wxOpenID != ''">
+            wxOpenID = #{wxOpenID},
+        </if>
+        <if test="age !=null">
+            age = #{age},
+        </if>
+        <if test="headImg !=null and headImg != ''">
+            headImg = #{headImg},
+        </if>
+        <if test="userStatus !=null and userStatus != ''">
+            userStatus = #{userStatus},
+        </if>
+        <if test="ceartTime !=null">
+            <![CDATA[ceartTime = #{ceartTime},]]>
+        </if>
+        <if test="lastUpdate !=null">
+            <![CDATA[lastUpdate = #{lastUpdate},]]>
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.UserDto" resultType="com.domain.dto.UserDto">
+        select
+        <include refid="selectUserCloumns" />
+        from  user
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.UserDto" resultType="com.domain.dto.UserDto">
+        select
+        <include refid="selectUserCloumns" />
+        from  user
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="userName !=null and userName != ''">
+            and userName = #{userName}
+        </if>
+        <if test="wxOpenID !=null and wxOpenID != ''">
+            and wxOpenID = #{wxOpenID}
+        </if>
+        <if test="age !=null">
+            and age = #{age}
+        </if>
+        <if test="headImg !=null and headImg != ''">
+            and headImg = #{headImg}
+        </if>
+        <if test="userStatus !=null and userStatus != ''">
+            and userStatus = #{userStatus}
+        </if>
+        <if test="ceartTime !=null">
+            and <![CDATA[ceartTime = #{ceartTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.UserDto" resultType="com.domain.dto.UserDto">
+        select
+        <include refid="selectUserCloumns" />
+        from  user
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="userName !=null and userName != ''">
+            and userName = #{userName}
+        </if>
+        <if test="wxOpenID !=null and wxOpenID != ''">
+            and wxOpenID = #{wxOpenID}
+        </if>
+        <if test="age !=null">
+            and age = #{age}
+        </if>
+        <if test="headImg !=null and headImg != ''">
+            and headImg = #{headImg}
+        </if>
+        <if test="userStatus !=null and userStatus != ''">
+            and userStatus = #{userStatus}
+        </if>
+        <if test="ceartTime !=null">
+            and <![CDATA[ceartTime = #{ceartTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+</mapper>

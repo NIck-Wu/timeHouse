@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TimehouseMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectTimehouseCloumns">
+        id,
+        userID,
+        videoID,
+        videoStatus,
+        creatTime,
+        lastUpdate
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.TimehouseDto" useGeneratedKeys="true" keyProperty="id">
+        insert into timehouse(
+          id,
+          userID,
+          videoID,
+          videoStatus,
+          creatTime,
+          lastUpdate
+        ) values (
+          #{id},
+          #{userID},
+          #{videoID},
+          #{videoStatus},
+          #{creatTime},
+          #{lastUpdate}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.TimehouseDto">
+		delete from timehouse
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.TimehouseDto">
+        update timehouse set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        <if test="userID !=null">
+            userID = #{userID},
+        </if>
+        <if test="videoID !=null">
+            videoID = #{videoID},
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            videoStatus = #{videoStatus},
+        </if>
+        <if test="creatTime !=null">
+            <![CDATA[creatTime = #{creatTime},]]>
+        </if>
+        <if test="lastUpdate !=null">
+            <![CDATA[lastUpdate = #{lastUpdate},]]>
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.TimehouseDto" resultType="com.domain.dto.TimehouseDto">
+        select
+        <include refid="selectTimehouseCloumns" />
+        from  timehouse
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.TimehouseDto" resultType="com.domain.dto.TimehouseDto">
+        select
+        <include refid="selectTimehouseCloumns" />
+        from  timehouse
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="userID !=null">
+            and userID = #{userID}
+        </if>
+        <if test="videoID !=null">
+            and videoID = #{videoID}
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            and videoStatus = #{videoStatus}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.TimehouseDto" resultType="com.domain.dto.TimehouseDto">
+        select
+        <include refid="selectTimehouseCloumns" />
+        from  timehouse
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="userID !=null">
+            and userID = #{userID}
+        </if>
+        <if test="videoID !=null">
+            and videoID = #{videoID}
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            and videoStatus = #{videoStatus}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+</mapper>

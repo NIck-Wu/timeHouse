@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OrdersMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectOrdersCloumns">
+        id
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.OrdersDto" useGeneratedKeys="true" keyProperty="id">
+        insert into orders(
+          id
+        ) values (
+          #{id}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.OrdersDto">
+		delete from orders
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.OrdersDto">
+        update orders set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+        select
+        <include refid="selectOrdersCloumns" />
+        from  orders
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+        select
+        <include refid="selectOrdersCloumns" />
+        from  orders
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+        select
+        <include refid="selectOrdersCloumns" />
+        from  orders
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+    </select>
+</mapper>
