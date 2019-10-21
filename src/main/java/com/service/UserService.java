@@ -66,5 +66,9 @@ public interface UserService {
      * @param user
      */
     public PageQueryBean<UserDto> showPageQuery(PageQueryBean<UserDto> page);
+
+	// 用户微信登陆
+	public UserDto wxLogin(UserDto userDto);
+
 }
 

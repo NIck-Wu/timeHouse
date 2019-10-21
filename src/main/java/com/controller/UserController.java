@@ -2,17 +2,16 @@ package com.controller;
 
 import java.util.List;
 
-import com.xys.common.base.PageQueryBean;
-import com.xys.common.base.ResponseResult;
-import com.domain.dto.UserDto;
-import com.service.UserService;
-import com.service.WechatService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.domain.dto.UserDto;
+import com.service.UserService;
+import com.xys.common.base.PageQueryBean;
+import com.xys.common.base.ResponseResult;
 
 /**
  * 
@@ -27,9 +26,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private WechatService wechatService;
 
 	/**
 	 * 查询对象
@@ -122,7 +118,7 @@ public class UserController {
 	@RequestMapping(value = "wxLogin", method = RequestMethod.POST)
 	public ResponseResult<UserDto> wxLogin(@RequestBody UserDto user) {
 
-		UserDto result = wechatService.wxLogin(user);
+		UserDto result = userService.wxLogin(user);
 
 		return new ResponseResult<UserDto>(result);
 	}
