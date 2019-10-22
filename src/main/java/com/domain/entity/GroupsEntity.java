@@ -1,6 +1,5 @@
 package com.domain.entity;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +9,7 @@ import java.util.Date;
  * @author NIck
  * @date 2019-10-22 11:15:47
  */
-public class OrdersEntity implements Serializable {
+public class GroupsEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -18,11 +17,15 @@ public class OrdersEntity implements Serializable {
 	 */
 	private Integer id;
 	/**
-	 * 订单编号
+	 * 组编号
 	 */
-	private String orderNum;
+	private String groupNum;
 	/**
-	 * 胶囊ID
+	 * 组名称
+	 */
+	private String groupName;
+	/**
+	 * 胶囊编号
 	 */
 	private String capsuleNum;
 	/**
@@ -30,17 +33,13 @@ public class OrdersEntity implements Serializable {
 	 */
 	private Integer userID;
 	/**
-	 * 订单金额
+	 * 用户状态 1：开启  2：加入
 	 */
-	private BigDecimal orderAmount;
+	private String userStatus;
 	/**
-	 * 支付过期时间
+	 * 组状态  1：未过期  2：过期
 	 */
-	private Date expireTime;
-	/**
-	 * 支付完成时间
-	 */
-	private Date payFinishTime;
+	private String groupStatus;
 	/**
 	 * 创建时间
 	 */
@@ -63,25 +62,37 @@ public class OrdersEntity implements Serializable {
 		return id;
 	}
 	/**
-	 * 设置：订单编号
+	 * 设置：组编号
 	 */
-	public void setOrderNum(String orderNum) {
-		this.orderNum = orderNum;
+	public void setGroupNum(String groupNum) {
+		this.groupNum = groupNum;
 	}
 	/**
-	 * 获取：订单编号
+	 * 获取：组编号
 	 */
-	public String getOrderNum() {
-		return orderNum;
+	public String getGroupNum() {
+		return groupNum;
 	}
 	/**
-	 * 设置：胶囊ID
+	 * 设置：组名称
+	 */
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+	/**
+	 * 获取：组名称
+	 */
+	public String getGroupName() {
+		return groupName;
+	}
+	/**
+	 * 设置：胶囊编号
 	 */
 	public void setCapsuleNum(String capsuleNum) {
 		this.capsuleNum = capsuleNum;
 	}
 	/**
-	 * 获取：胶囊ID
+	 * 获取：胶囊编号
 	 */
 	public String getCapsuleNum() {
 		return capsuleNum;
@@ -99,40 +110,28 @@ public class OrdersEntity implements Serializable {
 		return userID;
 	}
 	/**
-	 * 设置：订单金额
+	 * 设置：用户状态 1：开启  2：加入
 	 */
-	public void setOrderAmount(BigDecimal orderAmount) {
-		this.orderAmount = orderAmount;
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
 	}
 	/**
-	 * 获取：订单金额
+	 * 获取：用户状态 1：开启  2：加入
 	 */
-	public BigDecimal getOrderAmount() {
-		return orderAmount;
+	public String getUserStatus() {
+		return userStatus;
 	}
 	/**
-	 * 设置：支付过期时间
+	 * 设置：组状态  1：未过期  2：过期
 	 */
-	public void setExpireTime(Date expireTime) {
-		this.expireTime = expireTime;
+	public void setGroupStatus(String groupStatus) {
+		this.groupStatus = groupStatus;
 	}
 	/**
-	 * 获取：支付过期时间
+	 * 获取：组状态  1：未过期  2：过期
 	 */
-	public Date getExpireTime() {
-		return expireTime;
-	}
-	/**
-	 * 设置：支付完成时间
-	 */
-	public void setPayFinishTime(Date payFinishTime) {
-		this.payFinishTime = payFinishTime;
-	}
-	/**
-	 * 获取：支付完成时间
-	 */
-	public Date getPayFinishTime() {
-		return payFinishTime;
+	public String getGroupStatus() {
+		return groupStatus;
 	}
 	/**
 	 * 设置：创建时间

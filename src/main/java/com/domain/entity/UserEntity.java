@@ -7,7 +7,7 @@ import java.util.Date;
  * 
  * 
  * @author NIck
- * @date 2019-10-18 16:51:23
+ * @date 2019-10-22 11:15:47
  */
 public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +32,10 @@ public class UserEntity implements Serializable {
 	 * 微信头像
 	 */
 	private String headImg;
+	/**
+	 * 专业
+	 */
+	private String major;
 	/**
 	 * 用户状态 1:正常  2:禁用
 	 */
@@ -104,6 +108,18 @@ public class UserEntity implements Serializable {
 	 */
 	public String getHeadImg() {
 		return headImg;
+	}
+	/**
+	 * 设置：专业
+	 */
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	/**
+	 * 获取：专业
+	 */
+	public String getMajor() {
+		return major;
 	}
 	/**
 	 * 设置：用户状态 1:正常  2:禁用

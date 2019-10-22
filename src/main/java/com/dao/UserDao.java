@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * 
  * @author
  * @version 1.0
- * @date 2019-10-18 16:51:23
+ * @date 2019-10-22 11:15:47
  */
 @Repository
 public class UserDao extends BaseMapper<UserDto> {

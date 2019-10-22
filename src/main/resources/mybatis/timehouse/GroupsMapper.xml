@@ -1,60 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="OrdersMapper">
+<mapper namespace="GroupsMapper">
 
     <!--查询结果列 -->
-    <sql id="selectOrdersCloumns">
+    <sql id="selectGroupsCloumns">
         id,
-        orderNum,
+        groupNum,
+        groupName,
         capsuleNum,
         userID,
-        orderAmount,
-        expireTime,
-        payFinishTime,
+        userStatus,
+        groupStatus,
         creatTime,
         lastUpdate
     </sql>
 
     <!-- 新增-->
-    <insert id="save" parameterType="com.domain.dto.OrdersDto" useGeneratedKeys="true" keyProperty="id">
-        insert into orders(
+    <insert id="save" parameterType="com.domain.dto.GroupsDto" useGeneratedKeys="true" keyProperty="id">
+        insert into groups(
           id,
-          orderNum,
+          groupNum,
+          groupName,
           capsuleNum,
           userID,
-          orderAmount,
-          expireTime,
-          payFinishTime,
+          userStatus,
+          groupStatus,
           creatTime,
           lastUpdate
         ) values (
           #{id},
-          #{orderNum},
+          #{groupNum},
+          #{groupName},
           #{capsuleNum},
           #{userID},
-          #{orderAmount},
-          #{expireTime},
-          #{payFinishTime},
+          #{userStatus},
+          #{groupStatus},
           #{creatTime},
           #{lastUpdate}
         )
     </insert>
 
     <!--根据主键删除-->
-    <delete id="deleteById" parameterType="com.domain.dto.OrdersDto">
-		delete from orders
+    <delete id="deleteById" parameterType="com.domain.dto.GroupsDto">
+		delete from groups
 		where id = #{id}
 	</delete>
 
     <!-- 修改 -->
-    <update id="editById" parameterType="com.domain.dto.OrdersDto">
-        update orders set
+    <update id="editById" parameterType="com.domain.dto.GroupsDto">
+        update groups set
         <if test="id !=null">
             id = #{id},
         </if>
-        <if test="orderNum !=null and orderNum != ''">
-            orderNum = #{orderNum},
+        <if test="groupNum !=null and groupNum != ''">
+            groupNum = #{groupNum},
+        </if>
+        <if test="groupName !=null and groupName != ''">
+            groupName = #{groupName},
         </if>
         <if test="capsuleNum !=null and capsuleNum != ''">
             capsuleNum = #{capsuleNum},
@@ -62,14 +65,11 @@
         <if test="userID !=null">
             userID = #{userID},
         </if>
-        <if test="orderAmount !=null and orderAmount != ''">
-            orderAmount = #{orderAmount},
+        <if test="userStatus !=null and userStatus != ''">
+            userStatus = #{userStatus},
         </if>
-        <if test="expireTime !=null">
-            <![CDATA[expireTime = #{expireTime},]]>
-        </if>
-        <if test="payFinishTime !=null">
-            <![CDATA[payFinishTime = #{payFinishTime},]]>
+        <if test="groupStatus !=null and groupStatus != ''">
+            groupStatus = #{groupStatus},
         </if>
         <if test="creatTime !=null">
             <![CDATA[creatTime = #{creatTime},]]>
@@ -83,25 +83,28 @@
     </update>
 
     <!-- 通过ID获取数据 -->
-    <select id="findById" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+    <select id="findById" parameterType="com.domain.dto.GroupsDto" resultType="com.domain.dto.GroupsDto">
         select
-        <include refid="selectOrdersCloumns" />
-        from  orders
+        <include refid="selectGroupsCloumns" />
+        from  groups
         where id = #{id}
     </select>
 
     <!-- 列表查询 -->
-    <select id="list" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+    <select id="list" parameterType="com.domain.dto.GroupsDto" resultType="com.domain.dto.GroupsDto">
         select
-        <include refid="selectOrdersCloumns" />
-        from  orders
+        <include refid="selectGroupsCloumns" />
+        from  groups
         <!--查询条件-->
         where 1 = 1
         <if test="id !=null">
             and id = #{id}
         </if>
-        <if test="orderNum !=null and orderNum != ''">
-            and orderNum = #{orderNum}
+        <if test="groupNum !=null and groupNum != ''">
+            and groupNum = #{groupNum}
+        </if>
+        <if test="groupName !=null and groupName != ''">
+            and groupName = #{groupName}
         </if>
         <if test="capsuleNum !=null and capsuleNum != ''">
             and capsuleNum = #{capsuleNum}
@@ -109,14 +112,11 @@
         <if test="userID !=null">
             and userID = #{userID}
         </if>
-        <if test="orderAmount !=null and orderAmount != ''">
-            and orderAmount = #{orderAmount}
+        <if test="userStatus !=null and userStatus != ''">
+            and userStatus = #{userStatus}
         </if>
-        <if test="expireTime !=null">
-            and <![CDATA[expireTime = #{expireTime}]]>
-        </if>
-        <if test="payFinishTime !=null">
-            and <![CDATA[payFinishTime = #{payFinishTime}]]>
+        <if test="groupStatus !=null and groupStatus != ''">
+            and groupStatus = #{groupStatus}
         </if>
         <if test="creatTime !=null">
             and <![CDATA[creatTime = #{creatTime}]]>
@@ -127,17 +127,20 @@
     </select>
 
     <!-- 分页查询 -->
-    <select id="page" parameterType="com.domain.dto.OrdersDto" resultType="com.domain.dto.OrdersDto">
+    <select id="page" parameterType="com.domain.dto.GroupsDto" resultType="com.domain.dto.GroupsDto">
         select
-        <include refid="selectOrdersCloumns" />
-        from  orders
+        <include refid="selectGroupsCloumns" />
+        from  groups
         <!--查询条件-->
         where 1 = 1
         <if test="id !=null">
             and id = #{id}
         </if>
-        <if test="orderNum !=null and orderNum != ''">
-            and orderNum = #{orderNum}
+        <if test="groupNum !=null and groupNum != ''">
+            and groupNum = #{groupNum}
+        </if>
+        <if test="groupName !=null and groupName != ''">
+            and groupName = #{groupName}
         </if>
         <if test="capsuleNum !=null and capsuleNum != ''">
             and capsuleNum = #{capsuleNum}
@@ -145,14 +148,11 @@
         <if test="userID !=null">
             and userID = #{userID}
         </if>
-        <if test="orderAmount !=null and orderAmount != ''">
-            and orderAmount = #{orderAmount}
+        <if test="userStatus !=null and userStatus != ''">
+            and userStatus = #{userStatus}
         </if>
-        <if test="expireTime !=null">
-            and <![CDATA[expireTime = #{expireTime}]]>
-        </if>
-        <if test="payFinishTime !=null">
-            and <![CDATA[payFinishTime = #{payFinishTime}]]>
+        <if test="groupStatus !=null and groupStatus != ''">
+            and groupStatus = #{groupStatus}
         </if>
         <if test="creatTime !=null">
             and <![CDATA[creatTime = #{creatTime}]]>

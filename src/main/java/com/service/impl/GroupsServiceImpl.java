@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xys.common.base.PageQueryBean;
-import com.dao.VideosDao;
-import com.domain.dto.VideosDto;
-import com.service.VideosService;
+import com.dao.GroupsDao;
+import com.domain.dto.GroupsDto;
+import com.service.GroupsService;
 
 
 /**
@@ -22,83 +22,83 @@ import com.service.VideosService;
  */
 @Service
 @Transactional
-public class VideosServiceImpl implements VideosService {
+public class GroupsServiceImpl implements GroupsService {
 
     @Autowired
-    private VideosDao videosDao;
+    private GroupsDao groupsDao;
 
     /**
      * 根据主键查询表信息
      *
-     * @param videos
+     * @param groups
      * @return
      */
     @Override
-    public VideosDto findById(VideosDto videos){
-        return videosDao.findById(videos);
+    public GroupsDto findById(GroupsDto groups){
+        return groupsDao.findById(groups);
     }
 
     /**
      * 根据对象查询表信息
      *
-     * @param videos
+     * @param groups
      * @return
      */
     @Override
-    public VideosDto find(VideosDto videos){
-        return videosDao.find(videos);
+    public GroupsDto find(GroupsDto groups){
+        return groupsDao.find(groups);
     }
 
     /**
      * 保存表信息
      *
-     * @param videos
+     * @param groups
      * @return
      */
     @Override
-    public void save(VideosDto videos){
-        videosDao.save(videos);
+    public void save(GroupsDto groups){
+        groupsDao.save(groups);
     }
 
     /**
      * 根据主键删除表信息
      *
-     * @param videos
+     * @param groups
      */
     @Override
-    public void delete(VideosDto videos){
-        videosDao.deleteById(videos);
+    public void delete(GroupsDto groups){
+        groupsDao.deleteById(groups);
     }
 
     /**
      * 根据主键修改表信息
      *
-     * @param videos
+     * @param groups
      */
     @Override
-    public void update(VideosDto videos){
-        videosDao.editById(videos);
+    public void update(GroupsDto groups){
+        groupsDao.editById(groups);
     }
 
     /**
      * 查询所有表列表
      *
-     * @param videos
+     * @param groups
      * @return
      */
     @Override
-    public List<VideosDto> list(VideosDto videos){
-        return videosDao.list(videos);
+    public List<GroupsDto> list(GroupsDto groups){
+        return groupsDao.list(groups);
     }
 
     /**
      * 分页查询表信息
      *
-     * @param videos
+     * @param groups
      */
     @Override
-    public PageQueryBean<VideosDto> showPageQuery(PageQueryBean<VideosDto> page){
-        return videosDao.page(page);
+    public PageQueryBean<GroupsDto> showPageQuery(PageQueryBean<GroupsDto> page){
+        return groupsDao.page(page);
     }
 
 }

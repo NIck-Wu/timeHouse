@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xys.common.base.PageQueryBean;
-import com.dao.VideosDao;
-import com.domain.dto.VideosDto;
-import com.service.VideosService;
+import com.dao.BannerDao;
+import com.domain.dto.BannerDto;
+import com.service.BannerService;
 
 
 /**
@@ -22,83 +22,83 @@ import com.service.VideosService;
  */
 @Service
 @Transactional
-public class VideosServiceImpl implements VideosService {
+public class BannerServiceImpl implements BannerService {
 
     @Autowired
-    private VideosDao videosDao;
+    private BannerDao bannerDao;
 
     /**
      * 根据主键查询表信息
      *
-     * @param videos
+     * @param banner
      * @return
      */
     @Override
-    public VideosDto findById(VideosDto videos){
-        return videosDao.findById(videos);
+    public BannerDto findById(BannerDto banner){
+        return bannerDao.findById(banner);
     }
 
     /**
      * 根据对象查询表信息
      *
-     * @param videos
+     * @param banner
      * @return
      */
     @Override
-    public VideosDto find(VideosDto videos){
-        return videosDao.find(videos);
+    public BannerDto find(BannerDto banner){
+        return bannerDao.find(banner);
     }
 
     /**
      * 保存表信息
      *
-     * @param videos
+     * @param banner
      * @return
      */
     @Override
-    public void save(VideosDto videos){
-        videosDao.save(videos);
+    public void save(BannerDto banner){
+        bannerDao.save(banner);
     }
 
     /**
      * 根据主键删除表信息
      *
-     * @param videos
+     * @param banner
      */
     @Override
-    public void delete(VideosDto videos){
-        videosDao.deleteById(videos);
+    public void delete(BannerDto banner){
+        bannerDao.deleteById(banner);
     }
 
     /**
      * 根据主键修改表信息
      *
-     * @param videos
+     * @param banner
      */
     @Override
-    public void update(VideosDto videos){
-        videosDao.editById(videos);
+    public void update(BannerDto banner){
+        bannerDao.editById(banner);
     }
 
     /**
      * 查询所有表列表
      *
-     * @param videos
+     * @param banner
      * @return
      */
     @Override
-    public List<VideosDto> list(VideosDto videos){
-        return videosDao.list(videos);
+    public List<BannerDto> list(BannerDto banner){
+        return bannerDao.list(banner);
     }
 
     /**
      * 分页查询表信息
      *
-     * @param videos
+     * @param banner
      */
     @Override
-    public PageQueryBean<VideosDto> showPageQuery(PageQueryBean<VideosDto> page){
-        return videosDao.page(page);
+    public PageQueryBean<BannerDto> showPageQuery(PageQueryBean<BannerDto> page){
+        return bannerDao.page(page);
     }
 
 }

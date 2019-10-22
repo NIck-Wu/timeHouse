@@ -9,7 +9,7 @@ import java.util.Date;
  * @author NIck
  * @date 2019-10-22 11:15:47
  */
-public class VideosEntity implements Serializable {
+public class BannerEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -17,21 +17,17 @@ public class VideosEntity implements Serializable {
 	 */
 	private Integer id;
 	/**
-	 * 视频名称
+	 * 轮播图名称
 	 */
-	private String videoName;
+	private String bannerName;
 	/**
-	 * 视频编号
+	 * 轮播图URL
 	 */
-	private String videoNum;
+	private String bannerImgUrl;
 	/**
-	 * 视频播放地址
+	 * 权重
 	 */
-	private String videoUrl;
-	/**
-	 * 视频状态  1：有效 2：无效
-	 */
-	private String videoStatus;
+	private Integer weight;
 	/**
 	 * 创建时间
 	 */
@@ -54,52 +50,40 @@ public class VideosEntity implements Serializable {
 		return id;
 	}
 	/**
-	 * 设置：视频名称
+	 * 设置：轮播图名称
 	 */
-	public void setVideoName(String videoName) {
-		this.videoName = videoName;
+	public void setBannerName(String bannerName) {
+		this.bannerName = bannerName;
 	}
 	/**
-	 * 获取：视频名称
+	 * 获取：轮播图名称
 	 */
-	public String getVideoName() {
-		return videoName;
+	public String getBannerName() {
+		return bannerName;
 	}
 	/**
-	 * 设置：视频编号
+	 * 设置：轮播图URL
 	 */
-	public void setVideoNum(String videoNum) {
-		this.videoNum = videoNum;
+	public void setBannerImgUrl(String bannerImgUrl) {
+		this.bannerImgUrl = bannerImgUrl;
 	}
 	/**
-	 * 获取：视频编号
+	 * 获取：轮播图URL
 	 */
-	public String getVideoNum() {
-		return videoNum;
+	public String getBannerImgUrl() {
+		return bannerImgUrl;
 	}
 	/**
-	 * 设置：视频播放地址
+	 * 设置：权重
 	 */
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
+	public void setWeight(Integer weight) {
+		this.weight = weight;
 	}
 	/**
-	 * 获取：视频播放地址
+	 * 获取：权重
 	 */
-	public String getVideoUrl() {
-		return videoUrl;
-	}
-	/**
-	 * 设置：视频状态  1：有效 2：无效
-	 */
-	public void setVideoStatus(String videoStatus) {
-		this.videoStatus = videoStatus;
-	}
-	/**
-	 * 获取：视频状态  1：有效 2：无效
-	 */
-	public String getVideoStatus() {
-		return videoStatus;
+	public Integer getWeight() {
+		return weight;
 	}
 	/**
 	 * 设置：创建时间

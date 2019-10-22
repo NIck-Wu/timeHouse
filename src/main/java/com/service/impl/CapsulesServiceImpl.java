@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xys.common.base.PageQueryBean;
-import com.dao.VideosDao;
-import com.domain.dto.VideosDto;
-import com.service.VideosService;
+import com.dao.CapsulesDao;
+import com.domain.dto.CapsulesDto;
+import com.service.CapsulesService;
 
 
 /**
@@ -22,83 +22,83 @@ import com.service.VideosService;
  */
 @Service
 @Transactional
-public class VideosServiceImpl implements VideosService {
+public class CapsulesServiceImpl implements CapsulesService {
 
     @Autowired
-    private VideosDao videosDao;
+    private CapsulesDao capsulesDao;
 
     /**
      * 根据主键查询表信息
      *
-     * @param videos
+     * @param capsules
      * @return
      */
     @Override
-    public VideosDto findById(VideosDto videos){
-        return videosDao.findById(videos);
+    public CapsulesDto findById(CapsulesDto capsules){
+        return capsulesDao.findById(capsules);
     }
 
     /**
      * 根据对象查询表信息
      *
-     * @param videos
+     * @param capsules
      * @return
      */
     @Override
-    public VideosDto find(VideosDto videos){
-        return videosDao.find(videos);
+    public CapsulesDto find(CapsulesDto capsules){
+        return capsulesDao.find(capsules);
     }
 
     /**
      * 保存表信息
      *
-     * @param videos
+     * @param capsules
      * @return
      */
     @Override
-    public void save(VideosDto videos){
-        videosDao.save(videos);
+    public void save(CapsulesDto capsules){
+        capsulesDao.save(capsules);
     }
 
     /**
      * 根据主键删除表信息
      *
-     * @param videos
+     * @param capsules
      */
     @Override
-    public void delete(VideosDto videos){
-        videosDao.deleteById(videos);
+    public void delete(CapsulesDto capsules){
+        capsulesDao.deleteById(capsules);
     }
 
     /**
      * 根据主键修改表信息
      *
-     * @param videos
+     * @param capsules
      */
     @Override
-    public void update(VideosDto videos){
-        videosDao.editById(videos);
+    public void update(CapsulesDto capsules){
+        capsulesDao.editById(capsules);
     }
 
     /**
      * 查询所有表列表
      *
-     * @param videos
+     * @param capsules
      * @return
      */
     @Override
-    public List<VideosDto> list(VideosDto videos){
-        return videosDao.list(videos);
+    public List<CapsulesDto> list(CapsulesDto capsules){
+        return capsulesDao.list(capsules);
     }
 
     /**
      * 分页查询表信息
      *
-     * @param videos
+     * @param capsules
      */
     @Override
-    public PageQueryBean<VideosDto> showPageQuery(PageQueryBean<VideosDto> page){
-        return videosDao.page(page);
+    public PageQueryBean<CapsulesDto> showPageQuery(PageQueryBean<CapsulesDto> page){
+        return capsulesDao.page(page);
     }
 
 }

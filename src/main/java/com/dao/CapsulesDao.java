@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.domain.dto.TimehouseDto;
+import com.domain.dto.CapsulesDto;
 import com.xys.common.base.BaseMapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
  * 
  * @author
  * @version 1.0
- * @date 2019-10-18 16:51:23
+ * @date 2019-10-22 11:15:47
  */
 @Repository
-public class TimehouseDao extends BaseMapper<TimehouseDto> {
+public class CapsulesDao extends BaseMapper<CapsulesDto> {
 	
 }

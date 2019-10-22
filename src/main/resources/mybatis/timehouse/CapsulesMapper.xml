@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CapsulesMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectCapsulesCloumns">
+        id,
+        capsuleNum,
+        capsuleTitle,
+        introduce,
+        videoID,
+        capsuleExpireTime,
+        capsuleStatus,
+        creatTime,
+        lastUpdate
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.CapsulesDto" useGeneratedKeys="true" keyProperty="id">
+        insert into capsules(
+          id,
+          capsuleNum,
+          capsuleTitle,
+          introduce,
+          videoID,
+          capsuleExpireTime,
+          capsuleStatus,
+          creatTime,
+          lastUpdate
+        ) values (
+          #{id},
+          #{capsuleNum},
+          #{capsuleTitle},
+          #{introduce},
+          #{videoID},
+          #{capsuleExpireTime},
+          #{capsuleStatus},
+          #{creatTime},
+          #{lastUpdate}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.CapsulesDto">
+		delete from capsules
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.CapsulesDto">
+        update capsules set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        <if test="capsuleNum !=null and capsuleNum != ''">
+            capsuleNum = #{capsuleNum},
+        </if>
+        <if test="capsuleTitle !=null and capsuleTitle != ''">
+            capsuleTitle = #{capsuleTitle},
+        </if>
+        <if test="introduce !=null and introduce != ''">
+            introduce = #{introduce},
+        </if>
+        <if test="videoID !=null">
+            videoID = #{videoID},
+        </if>
+        <if test="capsuleExpireTime !=null">
+            <![CDATA[capsuleExpireTime = #{capsuleExpireTime},]]>
+        </if>
+        <if test="capsuleStatus !=null and capsuleStatus != ''">
+            capsuleStatus = #{capsuleStatus},
+        </if>
+        <if test="creatTime !=null">
+            <![CDATA[creatTime = #{creatTime},]]>
+        </if>
+        <if test="lastUpdate !=null">
+            <![CDATA[lastUpdate = #{lastUpdate},]]>
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.CapsulesDto" resultType="com.domain.dto.CapsulesDto">
+        select
+        <include refid="selectCapsulesCloumns" />
+        from  capsules
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.CapsulesDto" resultType="com.domain.dto.CapsulesDto">
+        select
+        <include refid="selectCapsulesCloumns" />
+        from  capsules
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="capsuleNum !=null and capsuleNum != ''">
+            and capsuleNum = #{capsuleNum}
+        </if>
+        <if test="capsuleTitle !=null and capsuleTitle != ''">
+            and capsuleTitle = #{capsuleTitle}
+        </if>
+        <if test="introduce !=null and introduce != ''">
+            and introduce = #{introduce}
+        </if>
+        <if test="videoID !=null">
+            and videoID = #{videoID}
+        </if>
+        <if test="capsuleExpireTime !=null">
+            and <![CDATA[capsuleExpireTime = #{capsuleExpireTime}]]>
+        </if>
+        <if test="capsuleStatus !=null and capsuleStatus != ''">
+            and capsuleStatus = #{capsuleStatus}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.CapsulesDto" resultType="com.domain.dto.CapsulesDto">
+        select
+        <include refid="selectCapsulesCloumns" />
+        from  capsules
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="capsuleNum !=null and capsuleNum != ''">
+            and capsuleNum = #{capsuleNum}
+        </if>
+        <if test="capsuleTitle !=null and capsuleTitle != ''">
+            and capsuleTitle = #{capsuleTitle}
+        </if>
+        <if test="introduce !=null and introduce != ''">
+            and introduce = #{introduce}
+        </if>
+        <if test="videoID !=null">
+            and videoID = #{videoID}
+        </if>
+        <if test="capsuleExpireTime !=null">
+            and <![CDATA[capsuleExpireTime = #{capsuleExpireTime}]]>
+        </if>
+        <if test="capsuleStatus !=null and capsuleStatus != ''">
+            and capsuleStatus = #{capsuleStatus}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdate !=null">
+            and <![CDATA[lastUpdate = #{lastUpdate}]]>
+        </if>
+    </select>
+</mapper>

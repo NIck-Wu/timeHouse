@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.domain.dto.VideosDto;
+import com.domain.dto.BannerDto;
 import com.xys.common.base.BaseMapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @date 2019-10-22 11:15:47
  */
 @Repository
-public class VideosDao extends BaseMapper<VideosDto> {
+public class BannerDao extends BaseMapper<BannerDto> {
 	
 }

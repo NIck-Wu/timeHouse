@@ -10,6 +10,7 @@
         wxOpenID,
         age,
         headImg,
+        major,
         userStatus,
         ceartTime,
         lastUpdate
@@ -23,6 +24,7 @@
           wxOpenID,
           age,
           headImg,
+          major,
           userStatus,
           ceartTime,
           lastUpdate
@@ -32,6 +34,7 @@
           #{wxOpenID},
           #{age},
           #{headImg},
+          #{major},
           #{userStatus},
           #{ceartTime},
           #{lastUpdate}
@@ -61,6 +64,9 @@
         </if>
         <if test="headImg !=null and headImg != ''">
             headImg = #{headImg},
+        </if>
+        <if test="major !=null and major != ''">
+            major = #{major},
         </if>
         <if test="userStatus !=null and userStatus != ''">
             userStatus = #{userStatus},
@@ -106,6 +112,9 @@
         <if test="headImg !=null and headImg != ''">
             and headImg = #{headImg}
         </if>
+        <if test="major !=null and major != ''">
+            and major = #{major}
+        </if>
         <if test="userStatus !=null and userStatus != ''">
             and userStatus = #{userStatus}
         </if>
@@ -138,6 +147,9 @@
         </if>
         <if test="headImg !=null and headImg != ''">
             and headImg = #{headImg}
+        </if>
+        <if test="major !=null and major != ''">
+            and major = #{major}
         </if>
         <if test="userStatus !=null and userStatus != ''">
             and userStatus = #{userStatus}

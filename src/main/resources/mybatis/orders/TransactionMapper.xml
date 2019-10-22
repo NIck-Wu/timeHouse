@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TransactionMapper">
+
+    <!--查询结果列 -->
+    <sql id="selectTransactionCloumns">
+        id,
+        transactionNO,
+        ordersNO,
+        payType,
+        creatTime,
+        lastUpdateTime
+    </sql>
+
+    <!-- 新增-->
+    <insert id="save" parameterType="com.domain.dto.TransactionDto" useGeneratedKeys="true" keyProperty="id">
+        insert into transaction(
+          id,
+          transactionNO,
+          ordersNO,
+          payType,
+          creatTime,
+          lastUpdateTime
+        ) values (
+          #{id},
+          #{transactionNO},
+          #{ordersNO},
+          #{payType},
+          #{creatTime},
+          #{lastUpdateTime}
+        )
+    </insert>
+
+    <!--根据主键删除-->
+    <delete id="deleteById" parameterType="com.domain.dto.TransactionDto">
+		delete from transaction
+		where id = #{id}
+	</delete>
+
+    <!-- 修改 -->
+    <update id="editById" parameterType="com.domain.dto.TransactionDto">
+        update transaction set
+        <if test="id !=null">
+            id = #{id},
+        </if>
+        <if test="transactionNO !=null and transactionNO != ''">
+            transactionNO = #{transactionNO},
+        </if>
+        <if test="ordersNO !=null and ordersNO != ''">
+            ordersNO = #{ordersNO},
+        </if>
+        <if test="payType !=null and payType != ''">
+            payType = #{payType},
+        </if>
+        <if test="creatTime !=null">
+            <![CDATA[creatTime = #{creatTime},]]>
+        </if>
+        <if test="lastUpdateTime !=null">
+            <![CDATA[lastUpdateTime = #{lastUpdateTime},]]>
+        </if>
+        id = #{id}
+
+        where id = #{id}
+    </update>
+
+    <!-- 通过ID获取数据 -->
+    <select id="findById" parameterType="com.domain.dto.TransactionDto" resultType="com.domain.dto.TransactionDto">
+        select
+        <include refid="selectTransactionCloumns" />
+        from  transaction
+        where id = #{id}
+    </select>
+
+    <!-- 列表查询 -->
+    <select id="list" parameterType="com.domain.dto.TransactionDto" resultType="com.domain.dto.TransactionDto">
+        select
+        <include refid="selectTransactionCloumns" />
+        from  transaction
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="transactionNO !=null and transactionNO != ''">
+            and transactionNO = #{transactionNO}
+        </if>
+        <if test="ordersNO !=null and ordersNO != ''">
+            and ordersNO = #{ordersNO}
+        </if>
+        <if test="payType !=null and payType != ''">
+            and payType = #{payType}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdateTime !=null">
+            and <![CDATA[lastUpdateTime = #{lastUpdateTime}]]>
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="page" parameterType="com.domain.dto.TransactionDto" resultType="com.domain.dto.TransactionDto">
+        select
+        <include refid="selectTransactionCloumns" />
+        from  transaction
+        <!--查询条件-->
+        where 1 = 1
+        <if test="id !=null">
+            and id = #{id}
+        </if>
+        <if test="transactionNO !=null and transactionNO != ''">
+            and transactionNO = #{transactionNO}
+        </if>
+        <if test="ordersNO !=null and ordersNO != ''">
+            and ordersNO = #{ordersNO}
+        </if>
+        <if test="payType !=null and payType != ''">
+            and payType = #{payType}
+        </if>
+        <if test="creatTime !=null">
+            and <![CDATA[creatTime = #{creatTime}]]>
+        </if>
+        <if test="lastUpdateTime !=null">
+            and <![CDATA[lastUpdateTime = #{lastUpdateTime}]]>
+        </if>
+    </select>
+</mapper>

@@ -7,7 +7,9 @@
     <sql id="selectVideosCloumns">
         id,
         videoName,
-        videoURL,
+        videoNum,
+        videoUrl,
+        videoStatus,
         creatTime,
         lastUpdate
     </sql>
@@ -17,13 +19,17 @@
         insert into videos(
           id,
           videoName,
-          videoURL,
+          videoNum,
+          videoUrl,
+          videoStatus,
           creatTime,
           lastUpdate
         ) values (
           #{id},
           #{videoName},
-          #{videoURL},
+          #{videoNum},
+          #{videoUrl},
+          #{videoStatus},
           #{creatTime},
           #{lastUpdate}
         )
@@ -44,8 +50,14 @@
         <if test="videoName !=null and videoName != ''">
             videoName = #{videoName},
         </if>
-        <if test="videoURL !=null and videoURL != ''">
-            videoURL = #{videoURL},
+        <if test="videoNum !=null and videoNum != ''">
+            videoNum = #{videoNum},
+        </if>
+        <if test="videoUrl !=null and videoUrl != ''">
+            videoUrl = #{videoUrl},
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            videoStatus = #{videoStatus},
         </if>
         <if test="creatTime !=null">
             <![CDATA[creatTime = #{creatTime},]]>
@@ -79,8 +91,14 @@
         <if test="videoName !=null and videoName != ''">
             and videoName = #{videoName}
         </if>
-        <if test="videoURL !=null and videoURL != ''">
-            and videoURL = #{videoURL}
+        <if test="videoNum !=null and videoNum != ''">
+            and videoNum = #{videoNum}
+        </if>
+        <if test="videoUrl !=null and videoUrl != ''">
+            and videoUrl = #{videoUrl}
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            and videoStatus = #{videoStatus}
         </if>
         <if test="creatTime !=null">
             and <![CDATA[creatTime = #{creatTime}]]>
@@ -103,8 +121,14 @@
         <if test="videoName !=null and videoName != ''">
             and videoName = #{videoName}
         </if>
-        <if test="videoURL !=null and videoURL != ''">
-            and videoURL = #{videoURL}
+        <if test="videoNum !=null and videoNum != ''">
+            and videoNum = #{videoNum}
+        </if>
+        <if test="videoUrl !=null and videoUrl != ''">
+            and videoUrl = #{videoUrl}
+        </if>
+        <if test="videoStatus !=null and videoStatus != ''">
+            and videoStatus = #{videoStatus}
         </if>
         <if test="creatTime !=null">
             and <![CDATA[creatTime = #{creatTime}]]>
