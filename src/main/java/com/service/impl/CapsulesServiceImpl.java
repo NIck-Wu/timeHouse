@@ -11,7 +11,6 @@ import com.dao.CapsulesDao;
 import com.domain.dto.CapsulesDto;
 import com.service.CapsulesService;
 
-
 /**
  *
  * 表服务实现
@@ -24,81 +23,91 @@ import com.service.CapsulesService;
 @Transactional
 public class CapsulesServiceImpl implements CapsulesService {
 
-    @Autowired
-    private CapsulesDao capsulesDao;
+	@Autowired
+	private CapsulesDao capsulesDao;
 
-    /**
-     * 根据主键查询表信息
-     *
-     * @param capsules
-     * @return
-     */
-    @Override
-    public CapsulesDto findById(CapsulesDto capsules){
-        return capsulesDao.findById(capsules);
-    }
+	/**
+	 * 根据主键查询表信息
+	 *
+	 * @param capsules
+	 * @return
+	 */
+	@Override
+	public CapsulesDto findById(CapsulesDto capsules) {
+		return capsulesDao.findById(capsules);
+	}
 
-    /**
-     * 根据对象查询表信息
-     *
-     * @param capsules
-     * @return
-     */
-    @Override
-    public CapsulesDto find(CapsulesDto capsules){
-        return capsulesDao.find(capsules);
-    }
+	/**
+	 * 根据对象查询表信息
+	 *
+	 * @param capsules
+	 * @return
+	 */
+	@Override
+	public CapsulesDto find(CapsulesDto capsules) {
+		return capsulesDao.find(capsules);
+	}
 
-    /**
-     * 保存表信息
-     *
-     * @param capsules
-     * @return
-     */
-    @Override
-    public void save(CapsulesDto capsules){
-        capsulesDao.save(capsules);
-    }
+	/**
+	 * 保存表信息
+	 *
+	 * @param capsules
+	 * @return
+	 */
+	@Override
+	public void save(CapsulesDto capsules) {
 
-    /**
-     * 根据主键删除表信息
-     *
-     * @param capsules
-     */
-    @Override
-    public void delete(CapsulesDto capsules){
-        capsulesDao.deleteById(capsules);
-    }
+		capsulesDao.save(capsules);
+	}
 
-    /**
-     * 根据主键修改表信息
-     *
-     * @param capsules
-     */
-    @Override
-    public void update(CapsulesDto capsules){
-        capsulesDao.editById(capsules);
-    }
+	/**
+	 * 根据主键删除表信息
+	 *
+	 * @param capsules
+	 */
+	@Override
+	public void delete(CapsulesDto capsules) {
+		capsulesDao.deleteById(capsules);
+	}
 
-    /**
-     * 查询所有表列表
-     *
-     * @param capsules
-     * @return
-     */
-    @Override
-    public List<CapsulesDto> list(CapsulesDto capsules){
-        return capsulesDao.list(capsules);
-    }
+	/**
+	 * 根据主键修改表信息
+	 *
+	 * @param capsules
+	 */
+	@Override
+	public void update(CapsulesDto capsules) {
+		capsulesDao.editById(capsules);
+	}
 
-    /**
-     * 分页查询表信息
-     *
-     * @param capsules
-     */
-    @Override
-    public PageQueryBean<CapsulesDto> showPageQuery(PageQueryBean<CapsulesDto> page){
-        return capsulesDao.page(page);
-    }
+	/**
+	 * 查询所有表列表
+	 *
+	 * @param capsules
+	 * @return
+	 */
+	@Override
+	public List<CapsulesDto> list(CapsulesDto capsules) {
+		return capsulesDao.list(capsules);
+	}
+
+	/**
+	 * 分页查询表信息
+	 *
+	 * @param capsules
+	 */
+	@Override
+	public PageQueryBean<CapsulesDto> showPageQuery(PageQueryBean<CapsulesDto> page) {
+		return capsulesDao.page(page);
+	}
+
+	/**
+	 * 获取倒计时7天要过期的记录列表
+	 */
+	@Override
+	public List<CapsulesDto> getAll7DaysExpriseList(CapsulesDto capsulesDto) {
+
+		return capsulesDao.list("getAll7DaysExpriseList", capsulesDto);
+	}
 
 }
